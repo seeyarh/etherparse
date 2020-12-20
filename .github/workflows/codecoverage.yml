@@ -12,6 +12,11 @@ jobs:
       with:
         toolchain: nightly
         override: true
+    - name: install cargo-binutils
+      uses: action-rs/cargo@v1.0.1
+      with:
+        command: install
+        args: cargo-binutils
     - name: cargo test (instrumented)
       uses: actions-rs/cargo@v1.0.1
       with:
