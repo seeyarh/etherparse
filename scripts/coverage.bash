@@ -51,6 +51,7 @@ cargo cov -- report \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
   > "${coverage_dir}/report_all.txt"
@@ -61,6 +62,7 @@ cargo cov -- report \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     --ignore-filename-regex='tests/' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
@@ -70,6 +72,7 @@ cargo cov -- show --format=html \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
     "--output-dir=${coverage_dir}/html_all"
@@ -78,6 +81,7 @@ cargo cov -- show --format=html \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     --ignore-filename-regex='tests/' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
@@ -87,6 +91,7 @@ cargo cov -- export --format=lcov \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
   > "${coverage_dir}/export.lcov.txt"
@@ -95,6 +100,7 @@ cargo cov -- export --format=text \
     --Xdemangler=rustfilt \
     --ignore-filename-regex='/.cargo/registry' \
     --ignore-filename-regex='/.rustup/toolchains' \
+    --ignore-filename-regex='/rustc' \
     "--instr-profile=${coverage_dir}/raw/merge.profdata" \
     $(printf -- "-object %s " $(cat "${coverage_dir}/raw/filenames.txt")) \
   > "${coverage_dir}/export.json"
