@@ -21,9 +21,11 @@ exclude = [
 [features]
 default = ["std"]
 std = ["arrayvec/std"]
+serde= ["dep:serde"]
 
 [dependencies]
 arrayvec = { version = "0.7.2", default-features = false }
+serde = {version = "1.0.192", features = ["derive"], optional = true}
 
 [dev-dependencies]
 proptest = "1.0.0"

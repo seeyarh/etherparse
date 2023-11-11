@@ -2,7 +2,7 @@ use crate::*;
 
 /// IEEE 802.1Q VLAN Tagging Header (can be single or double tagged).
 #[derive(Clone, Debug, Eq, PartialEq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub enum VlanHeader {
     /// IEEE 802.1Q VLAN Tagging Header
     Single(SingleVlanHeader),

@@ -2,7 +2,7 @@ use crate::{err::Layer, err::SliceWriteSpaceError, *};
 
 /// Ethernet II header.
 #[derive(Clone, Debug, Eq, PartialEq, Default)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct Ethernet2Header {
     /// Source MAC Address
     pub source: [u8; 6],

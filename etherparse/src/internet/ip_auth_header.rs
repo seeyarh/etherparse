@@ -13,7 +13,7 @@ pub type IpAuthenticationHeader = IpAuthHeader;
 
 /// IP Authentication Header (rfc4302)
 #[derive(Clone)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct IpAuthHeader {
     /// IP protocol number specifying the next header or transport layer protocol.
     ///
@@ -29,6 +29,7 @@ pub struct IpAuthHeader {
     raw_icv_len: u8,
     /// Buffer containing the "Encoded Integrity Check Value-ICV" (variable).
     /// The length of the used data can be set via the `variable` (must be a multiple of 4 bytes).
+    #[serde(serialize_with = "<[_]>::serialize")]
     raw_icv_buffer: [u8; 0xfe * 4],
 }
 
@@ -61,7 +62,7 @@ impl Default for IpAuthHeader {
             spi: 0,
             sequence_number: 0,
             raw_icv_len: 0,
-            raw_icv_buffer: [0; 0xfe * 4]
+            raw_icv_buffer: [0; 0xfe * 4],
         }
     }
 }
@@ -315,7 +316,9 @@ mod test {
 
     #[test]
     fn default() {
-        let default_header = IpAuthHeader { ..Default::default() };
+        let default_header = IpAuthHeader {
+            ..Default::default()
+        };
 
         assert_eq!(default_header.next_header, IpNumber(255));
         assert_eq!(default_header.spi, 0);

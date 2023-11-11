@@ -2,7 +2,7 @@ use super::*;
 
 /// Code values for ICMPv6 time exceeded message.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub enum TimeExceededCode {
     /// "hop limit exceeded in transit"
     HopLimitExceeded = 0,

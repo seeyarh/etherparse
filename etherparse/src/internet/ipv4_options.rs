@@ -35,8 +35,10 @@ use core::borrow::{Borrow, BorrowMut};
 /// }
 /// ```
 #[derive(Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct Ipv4Options {
     pub(crate) len: u8,
+    #[serde(serialize_with = "<[_]>::serialize")]
     pub(crate) buf: [u8; 40],
 }
 

@@ -8,7 +8,7 @@ use crate::{err::ipv4_exts::ExtsWalkError, *};
 /// Currently not supported:
 /// - Encapsulating Security Payload Header (ESP)
 #[derive(Clone, Debug, Eq, PartialEq, Default)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct Ipv4Extensions {
     pub auth: Option<IpAuthHeader>,
 }

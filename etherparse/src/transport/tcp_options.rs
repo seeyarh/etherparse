@@ -126,6 +126,7 @@ use crate::{tcp_option, TcpHeader, TcpOptionElement, TcpOptionWriteError, TcpOpt
 /// );
 /// ```
 #[derive(Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct TcpOptions {
     /// Number of bytes in the buffer.
     pub(crate) len: u8,
@@ -134,6 +135,7 @@ pub struct TcpOptions {
     /// (note that the `len` field defines the actual length). Use
     /// the options() method if you want to get a slice that has
     /// the actual length of the options.
+    #[serde(serialize_with = "<[_]>::serialize")]
     pub(crate) buf: [u8; 40],
 }
 

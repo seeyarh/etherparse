@@ -1,6 +1,6 @@
 /// A ICMPv4 timestamp or timestamp response message.
 #[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct TimestampMessage {
     pub id: u16,
     pub seq: u16,
