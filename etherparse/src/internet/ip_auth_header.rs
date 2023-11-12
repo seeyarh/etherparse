@@ -29,7 +29,7 @@ pub struct IpAuthHeader {
     raw_icv_len: u8,
     /// Buffer containing the "Encoded Integrity Check Value-ICV" (variable).
     /// The length of the used data can be set via the `variable` (must be a multiple of 4 bytes).
-    #[serde(serialize_with = "<[_]>::serialize")]
+    #[cfg_attr(feature = "serde", serde(serialize_with = "<[_]>::serialize"))]
     raw_icv_buffer: [u8; 0xfe * 4],
 }
 

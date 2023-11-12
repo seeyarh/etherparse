@@ -135,7 +135,7 @@ pub struct TcpOptions {
     /// (note that the `len` field defines the actual length). Use
     /// the options() method if you want to get a slice that has
     /// the actual length of the options.
-    #[serde(serialize_with = "<[_]>::serialize")]
+    #[cfg_attr(feature = "serde", serde(serialize_with = "<[_]>::serialize"))]
     pub(crate) buf: [u8; 40],
 }
 

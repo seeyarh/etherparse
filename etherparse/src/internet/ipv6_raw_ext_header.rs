@@ -34,7 +34,7 @@ pub struct Ipv6RawExtHeader {
     /// Length of the extension header in 8 octets (minus the first 8 octets).
     header_length: u8,
     //// The data contained in the extension header (excluding next_header & hdr length).
-    #[serde(serialize_with = "<[_]>::serialize")]
+    #[cfg_attr(feature = "serde", serde(serialize_with = "<[_]>::serialize"))]
     payload_buffer: [u8; 0xff * 8 + 6],
 }
 
